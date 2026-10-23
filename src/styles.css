@@ -1,0 +1,203 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+@source "../src";
+
+
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Innov Tech Solutions — Navy Trust design system.
+ * Palette: deep navy, mid navy, accent blue, light, gold accent.
+ * Typography: Space Grotesk (display) + DM Sans (body).
+ * All colors in oklch. Never hardcode hex in components.
+ */
+
+@theme inline {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-blue-accent: var(--blue-accent);
+
+  --shadow-elegant: 0 20px 60px -25px color-mix(in oklab, var(--navy-deep) 50%, transparent);
+  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--gold) 35%, transparent);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand palette — Navy Trust + gold accent */
+  --navy-deep: oklch(0.22 0.06 260);
+  --navy: oklch(0.30 0.07 258);
+  --navy-soft: oklch(0.48 0.10 252);
+  --blue-accent: oklch(0.62 0.13 245);
+  --gold: oklch(0.78 0.13 85);
+  --gold-foreground: oklch(0.20 0.05 260);
+
+  /* Semantic — light mode (corporate clean) */
+  --background: oklch(0.985 0.005 250);
+  --foreground: oklch(0.20 0.05 260);
+  --surface: oklch(0.97 0.008 250);
+  --surface-foreground: oklch(0.22 0.06 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.05 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.20 0.05 260);
+
+  --primary: oklch(0.22 0.06 260);
+  --primary-foreground: oklch(0.985 0.005 250);
+
+  --secondary: oklch(0.94 0.012 250);
+  --secondary-foreground: oklch(0.22 0.06 260);
+
+  --muted: oklch(0.94 0.012 250);
+  --muted-foreground: oklch(0.48 0.025 255);
+
+  --accent: oklch(0.62 0.13 245);
+  --accent-foreground: oklch(0.985 0.005 250);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+
+  --border: oklch(0.90 0.015 250);
+  --input: oklch(0.90 0.015 250);
+  --ring: oklch(0.62 0.13 245);
+}
+
+.dark {
+  --background: oklch(0.18 0.04 260);
+  --foreground: oklch(0.97 0.008 250);
+  --surface: oklch(0.22 0.06 260);
+  --surface-foreground: oklch(0.97 0.008 250);
+
+  --card: oklch(0.24 0.06 260);
+  --card-foreground: oklch(0.97 0.008 250);
+  --popover: oklch(0.24 0.06 260);
+  --popover-foreground: oklch(0.97 0.008 250);
+
+  --primary: oklch(0.97 0.008 250);
+  --primary-foreground: oklch(0.22 0.06 260);
+
+  --secondary: oklch(0.30 0.07 258);
+  --secondary-foreground: oklch(0.97 0.008 250);
+
+  --muted: oklch(0.30 0.07 258);
+  --muted-foreground: oklch(0.70 0.03 250);
+
+  --accent: oklch(0.62 0.13 245);
+  --accent-foreground: oklch(0.97 0.008 250);
+
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.62 0.13 245);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-sans { font-family: var(--font-sans); }
+
+  .bg-navy-deep { background-color: var(--navy-deep); }
+  .bg-navy { background-color: var(--navy); }
+  .text-gold { color: var(--gold); }
+  .bg-gold { background-color: var(--gold); }
+  .border-gold { border-color: var(--gold); }
+
+  .bg-gradient-navy {
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-soft) 100%);
+  }
+  .bg-gradient-hero {
+    background: radial-gradient(ellipse at top right, color-mix(in oklab, var(--blue-accent) 25%, transparent), transparent 60%),
+                radial-gradient(ellipse at bottom left, color-mix(in oklab, var(--gold) 12%, transparent), transparent 60%),
+                linear-gradient(180deg, var(--navy-deep), oklch(0.16 0.04 260));
+  }
+  .text-gradient-gold {
+    background-image: linear-gradient(90deg, var(--gold), oklch(0.88 0.10 90));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .container-wide {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-wide { padding-inline: 2rem; }
+  }
+
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
